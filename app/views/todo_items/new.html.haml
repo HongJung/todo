@@ -1,0 +1,8 @@
+.row
+  .col-sm-9
+    %h1 Add New Todo Item
+  .col-sm-3
+    = link_to 'Back', todo_lists_path, {class: 'btn btn-success'}
+%hr
+
+= render 'form'

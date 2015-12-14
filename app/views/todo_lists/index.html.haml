@@ -1,0 +1,63 @@
+.row
+  .col-xs-12.col-md-8
+    -# %h2 Todo List
+  .col-xs-6.col-md-4= link_to 'New Todo list', new_todo_list_path , class: "btn btn-primary"
+
+
+%h1.center Listing of Todo
+
+%br
+
+%h2.center Completed
+%table.table.table-hover
+  %thead
+    %tr
+      %th Title
+      %th Description
+      %th Color
+      %th Due date
+      %th
+
+  %tbody
+    - @completed.each do |todo_list|
+      %tr
+        %td= todo_list.title
+        %td= todo_list.description
+        %td= todo_list.color
+        %td= todo_list.due_date
+        %td.right
+          = link_to 'Show', todo_list
+          |
+          = link_to 'Edit', edit_todo_list_path(todo_list)
+          |
+          = link_to 'Destroy', todo_list, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+%br
+%br
+
+
+%h2.center Incompleted
+
+%table.table
+  %thead
+    %tr
+      %th Title
+      %th Description
+      %th Color
+      %th Due date
+      %th
+
+  %tbody
+    - @incompleted.each do |todo_list|
+      %tr{class: ((todo_list.due_date <= Time.now && !todo_list.complete?) ? 'red' : 'blue') }
+        %td= todo_list.title
+        %td= todo_list.description
+        %td= todo_list.color
+        %td= todo_list.due_date
+        %td
+          = link_to 'Show', todo_list
+          |
+          = link_to 'Edit', edit_todo_list_path(todo_list)
+          |
+          = link_to 'Destroy', todo_list, :method => :delete, :data => { :confirm => 'Are you sure?' }

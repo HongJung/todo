@@ -1,0 +1,31 @@
+%p#notice= notice
+
+.row
+  .col-xs-12.col-md-8
+    %h2 Show Todo List
+  .col-xs-6.col-md-4= link_to 'Edit', edit_todo_list_path(@todo_list) , class: "btn btn-primary"
+
+
+%p
+  %b Title:
+  = @todo_list.title
+%p
+  %b Description:
+  = @todo_list.description
+%p
+  %b Color:
+  = @todo_list.color
+%p
+  %b Due date:
+  = @todo_list.due_date
+%p
+  %b Complete:
+  = yes_no @todo_list.complete
+
+%p
+
+%hr
+
+= render file: 'todo_items/index'
+
+= link_to 'Todo Lists', todo_lists_path , class: "btn btn-primary"

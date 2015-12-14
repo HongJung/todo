@@ -1,0 +1,36 @@
+.row
+  .col-xs-12.col-md-8
+  .col-xs-6.col-md-4= link_to 'New Todo item', new_todo_list_todo_item_path(@todo_list) , class: "btn btn-primary"
+
+%h1 List of Todo Items
+
+-# %table.table.table-hover
+-#   %thead
+-#     %tr
+-#       %th Title
+-#       %th Status
+-#       %th Todo list
+-#       %th
+-#
+-#   %tbody
+-#     - @todo_list.todo_items.each do |todo_item|
+-#       %tr
+-#         %td= todo_item.title
+-#         %td= todo_item.status
+-#         %td= todo_item.todo_list
+-#         %td= link_to 'Show', [@todo_list, todo_item]
+-#         %td= link_to 'Edit', edit_todo_list_todo_item_path(@todo_list, todo_item)
+-#         %td= link_to 'Destroy', [@todo_list, todo_item], :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+.row
+  .col-sm-4.status.green
+    %h3 Todo
+    %ul
+      %li
+  .col-sm-4.status.yellow
+    %h3 Doing
+    %ul
+  .col-sm-4.status.red
+    %h3 Done
+    %ul

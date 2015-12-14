@@ -1,0 +1,19 @@
+= form_for [@todo_list, @todo_item] do |f|
+  - if @todo_item.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@todo_item.errors.count, "error")} prohibited this todo_item from being saved:"
+      %ul
+        - @todo_item.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :title
+    = f.text_field :title
+  .field
+    = f.label :status
+    = f.select :status, @statuses
+  .field
+    = f.label :todo_list
+    = f.collection_select :todo_list_id, TodoList.all, :id, :title, {prompt: true, selected: @todo_list.id}
+  .actions
+    = f.submit 'Save' , class: "btn btn-primary"

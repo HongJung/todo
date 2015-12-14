@@ -1,0 +1,13 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @todo_item.title
+%p
+  %b Status:
+  = @todo_item.status
+%p
+  %b Todo list:
+  = @todo_item.todo_list
+
+= link_to 'Back', @todo_list
